@@ -2,9 +2,9 @@ version: '3.7'
 services:
   app:
     build:
-      #      args:
-      #        user: mitte
-      #        uid: 1000
+      # args:
+      #   user: mitte
+      #   uid: 1000
       context: .
       dockerfile: .docker/Dockerfile
     image: mpts:laravel
@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
     ports:
       - 8081:80
-    #    user: ${USER_ID}:${GROUP_ID}
+    user: ${USER_ID}:${GROUP_ID}
     volumes:
       - ./:/var/www/html
     networks:

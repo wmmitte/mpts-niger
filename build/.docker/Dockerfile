@@ -1,11 +1,9 @@
 FROM php:8.0.1-apache
-# ARG USER_ID
-# ARG GROUP_ID 
-# RUN groupadd -f -g $GROUP_ID user
-# RUN useradd -u $USER_ID -g $GROUP_ID user
-# USER user
-ARG user
-ARG uid
+ARG USER_ID
+ARG GROUP_ID 
+RUN groupadd -f -g $GROUP_ID user
+RUN useradd -u $USER_ID -g $GROUP_ID user
+
 WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -33,13 +31,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
     && sudo apt install -yq nodejs build-essential \
     && composer global require laravel/installer 
 ENV PATH="$PATH:/root/.composer/vendor/bin"
-RUN useradd -G www-data,root -u 1000 -d /home/mitte mitte
-RUN mkdir -p /home/mitte/.composer && \
-    chown -R mitte:mitte /home/mitte
-
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
-USER mitte
-
-
+USER user
 # docker build -t mpts:laravel --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .docker 
