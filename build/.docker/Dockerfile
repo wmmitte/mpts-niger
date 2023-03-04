@@ -33,13 +33,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
     && sudo apt install -yq nodejs build-essential \
     && composer global require laravel/installer 
 ENV PATH="$PATH:/root/.composer/vendor/bin"
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+RUN useradd -G www-data,root -u 1000 -d /home/mitte mitte
+RUN mkdir -p /home/mitte/.composer && \
+    chown -R mitte:mitte /home/mitte
 
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
-USER $user
+USER mitte
 
 
 # docker build -t mpts:laravel --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .docker 

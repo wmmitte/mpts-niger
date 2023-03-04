@@ -2,9 +2,9 @@ version: '3.7'
 services:
   app:
     build:
-      args:
-        user: mitte
-        uid: 1000
+      #      args:
+      #        user: mitte
+      #        uid: 1000
       context: .
       dockerfile: .docker/Dockerfile
     image: mpts:laravel
