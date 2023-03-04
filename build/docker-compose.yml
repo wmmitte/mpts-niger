@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
     ports:
       - 8081:80
-    user: ${USER_ID}:${GROUP_ID}
+    #    user: ${USER_ID}:${GROUP_ID}
     volumes:
       - ./:/var/www/html
     networks:
