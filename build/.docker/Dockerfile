@@ -33,5 +33,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ENV PATH="$PATH:/root/.composer/vendor/bin"
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
+RUN chmod -R 777 /var/www/html
 USER user
 # docker build -t mpts:laravel --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .docker 

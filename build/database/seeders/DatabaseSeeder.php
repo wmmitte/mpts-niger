@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+       // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         // \App\Models\User::factory(10)->create();
        $this->call([
             EntitySeeder::class,
@@ -26,6 +26,6 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
             EmployerSeeder::class,
         ]);
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+       // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
