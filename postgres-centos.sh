@@ -44,4 +44,4 @@ networks:
 EOF
 
 cat ${_docker_datas_folder}/postgres12/docker-compose.yml
-docker-compose up -d -f ${_docker_datas_folder}/postgres12/docker-compose.yml
+docker-compose up -d --force-recreate -f ${_docker_datas_folder}/postgres12/docker-compose.yml
