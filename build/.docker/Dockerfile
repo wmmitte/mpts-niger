@@ -35,4 +35,5 @@ RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
 RUN chmod -R 777 /var/www/html
 USER user
+ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
 # docker build -t mpts:laravel --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .docker 
